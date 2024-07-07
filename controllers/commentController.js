@@ -23,7 +23,6 @@ exports.getCommentList = async (req, res) => {
         message: "Comment list fetched successfully",
       });
     }
-    res.json(commentsList);
   } catch (error) {
     handleError(res, error);
   }

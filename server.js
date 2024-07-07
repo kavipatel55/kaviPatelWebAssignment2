@@ -29,6 +29,7 @@ app.use("/api/users", require("./routes/usersRouter"));
 app.use("/api/products", require("./routes/productsRouter"));
 app.use("/api/carts", require("./routes/cartRouter"));
 app.use("/api/comments", require("./routes/commentRouter"));
+app.use("/api/orders", require("./routes/orderRouter"));
 
 // Start the server
 const PORT = 6000;

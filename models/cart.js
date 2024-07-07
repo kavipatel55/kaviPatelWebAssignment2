@@ -1,5 +1,7 @@
+//Import Mongoose library
 const mongoose = require("mongoose");
 
+// Define a new schema for the Cart collection using the Mongoose schema constructor
 const cartSchema = new mongoose.Schema({
   products: [
     {
@@ -10,4 +12,6 @@ const cartSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
+// This creates a new Mongoose model called 'Cart'
+//that maps to the 'carts' collection in the MongoDB database
 module.exports = mongoose.model("Cart", cartSchema);

@@ -9,7 +9,15 @@ const handleError = (res, error) => {
 // Get all products list
 exports.getProductsList = async (req, res) => {
   try {
-    res.json(await Product.find());
+    const productList = await Product.find();
+    if (productList.length === 0) {
+      res.json({ message: "Proudct is empty" });
+    } else {
+      res.status(200).json({
+        product: productList,
+        message: "Product list fetched successfully",
+      });
+    }
   } catch (error) {
     handleError(res, error);
   }

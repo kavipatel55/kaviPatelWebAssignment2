@@ -1,5 +1,10 @@
+// Import the Express library, which is a web framework for Node.js
 const express = require("express");
+
+// router object is used to define routes for a specific part of the application
 const router = express.Router();
+
+// OrderController manage order-related operations
 const orderController = require("../controllers/orderController");
 
 // Get - Get all orders list

@@ -1,5 +1,10 @@
+// Import the Express library, which is a web framework for Node.js
 const express = require("express");
+
+// router object is used to define routes for a specific part of the application
 const router = express.Router();
+
+// CommentController manage comment-related operations
 const commentController = require("../controllers/commentController");
 
 // Get all comments list

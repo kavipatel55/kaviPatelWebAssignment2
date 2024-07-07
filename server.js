@@ -26,6 +26,7 @@ mongoose
   });
 
 app.use("/api/users", require("./routes/usersRouter"));
+app.use("/api/products", require("./routes/productsRouter"));
 
 // Start the server
 const PORT = 6000;

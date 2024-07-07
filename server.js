@@ -25,8 +25,10 @@ mongoose
     process.exit(1);
   });
 
+app.use("/api/users", require("./routes/usersRouter"));
+
 // Start the server
-const PORT = 3000;
+const PORT = 6000;
 app.listen(PORT, () => {
   console.log(`Server running port ${PORT}`);
 });

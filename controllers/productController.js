@@ -9,7 +9,9 @@ const handleError = (res, error) => {
 // Get all products list
 exports.getProductsList = async (req, res) => {
   try {
+    console.log("Entering getProductsList");
     const productList = await Product.find();
+    console.log("Product list retrieved:", productList);
     if (productList.length === 0) {
       res.json({ message: "Proudct is empty" });
     } else {
@@ -18,24 +20,45 @@ exports.getProductsList = async (req, res) => {
         message: "Product list fetched successfully",
       });
     }
+    console.log("Response sent successfully");
   } catch (error) {
+    console.error("Error in getProductsList:", error);
     handleError(res, error);
   }
 };
 
-// Create new product
 exports.createProduct = async (req, res) => {
   try {
-    const { description, image, pricing, shippingCost } = req.body;
-    const product = new Product({ description, image, pricing, shippingCost });
+    console.log("Request Body:", req.body);
+    console.log("Uploaded File:", req.file);
+
+    const { name, description, pricing } = req.body;
+
+    // Check if an image was uploaded
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image is required' });
+    }
+
+    // Create a new product instance
+    const product = new Product({
+      name,   
+      description,
+      image: `http://localhost:3131/uploads/${req.file.filename}`,
+      pricing,
+    });
+
     await product.save();
-    res
-      .status(201)
-      .json({ product: product, message: "Product created successfully" });
+
+    // Send a successful response with the new product
+    res.status(201).json({ product, message: 'Product created successfully' });
   } catch (error) {
-    handleError(res, error);
+    // Handle errors and send an error response
+    console.error("Error creating product:", error);
+    res.status(500).json({ message: error.message });
   }
 };
+
+
 
 // Update product
 exports.updateProduct = async (req, res) => {

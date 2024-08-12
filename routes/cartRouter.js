@@ -23,4 +23,6 @@ router.put("/updateCartByCartId/:Id", cartController.updateCartByCartId);
 // Delete - Delete a cart by cart ID
 router.delete("/deleteCartByCartId/:Id", cartController.deleteCartByCartId);
 
+router.get("/getCartByUserId/:Id", cartController.getCartByUserId);
+
 module.exports = router;

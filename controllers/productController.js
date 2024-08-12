@@ -27,6 +27,23 @@ exports.getProductsList = async (req, res) => {
   }
 };
 
+
+// Get a cart by ID
+exports.getProductByProductId = async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.Id);
+    if (product == null) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.json({
+      product: product,
+      message: "Product found successfully",
+    });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
 exports.createProduct = async (req, res) => {
   try {
     console.log("Request Body:", req.body);

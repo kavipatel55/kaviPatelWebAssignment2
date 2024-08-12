@@ -7,6 +7,11 @@ const router = express.Router();
 // userController manage user-related operations
 const userController = require("../controllers/userController");
 
+router.post('/register',userController.registerUser);
+
+router.post('/login',userController.loginUser);
+
+router.post('/logout',userController.logout);
 // Get all users list
 router.get("/getUserList", userController.getAllUsers);
 

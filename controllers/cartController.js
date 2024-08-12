@@ -76,7 +76,22 @@ exports.deleteCartByCartId = async (req, res) => {
     if (deletedCart == null) {
       return res.status(404).json({ error: "Cart not found" });
     }
-    res.json({ message: "Deleted successfully" });
+    res.json({ message: "Deleted successfully", deletedCart: deletedCart });
+  } catch (error) {
+    handleError(res, error);
+  }
+};
+
+// Get cart by user ID
+exports.getCartByUserId = async (req, res) => {
+  try {
+    const cart = await Cart.findOne({ user: req.params.Id }); // Find cart by user ID
+    if (cart == null) {
+      return res.status(404).json({ error: "Cart not found for this user" });
+    }
+    res
+      .status(200)
+      .json({ message: "Cart Added successfully", cart: cart });
   } catch (error) {
     handleError(res, error);
   }

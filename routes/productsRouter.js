@@ -19,6 +19,9 @@ router.post('/createProduct', upload.single('image'), productController.createPr
 // GET - products list
 router.get("/getProductsList", productController.getProductsList);
 
+// Get - Get a product by product ID
+router.get("/getProductByProductId/:Id", productController.getProductByProductId);
+
 // Put - Update product by ID
 router.put("/updateProduct/:Id", productController.updateProduct);
 

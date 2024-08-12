@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 
 // Define a new schema for the User collection using the Mongoose schema constructor
 const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-  username: String,
+  email: {type:String,required:true,unique:true},
+  password: {type:String,required:true},  
   purchaseHistory: Array,
   shippingAddress: String,
 });

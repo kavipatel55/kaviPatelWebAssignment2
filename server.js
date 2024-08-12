@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 // Create an instance of Express
 const app = expressInstance();
@@ -11,6 +12,7 @@ const app = expressInstance();
 // Middleware to parse JSON bodies of requests
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser());
 
 // Serve static files from the 'uploads' directory
 app.use('/uploads', expressInstance.static(path.join(__dirname, 'uploads')));
